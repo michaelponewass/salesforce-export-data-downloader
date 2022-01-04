@@ -7,7 +7,7 @@ ROOT=os.path.dirname(os.path.abspath(__file__))
 
 def loadConfig():
     try:
-        with open(ROOT + "\config.json") as config:
+        with open(ROOT + "/config.json") as config:
             c = json.load(config)
             config.close()
     except:
@@ -62,11 +62,11 @@ def getFileLink(RESULT, CONFIG):
 def downloadFile(LINK, RESULT, CONFIG):
     REQ_URL = CONFIG.ORG_URL + LINK
     fileName = LINK[(LINK.find('fileName') +9):(LINK.find('&'))]
-    DIR = ROOT + "\\downloads\\"
+    DIR = ROOT + "/downloads/"
     CHECK_FOLDER = os.path.isdir(DIR)
     if not CHECK_FOLDER:
         os.makedirs(DIR)
-    Location = ROOT + "\\downloads\\" + fileName
+    Location = ROOT + "/downloads/" + fileName
     h = headers(RESULT)
     try:
         with requests.get(REQ_URL.strip(), headers=h, stream=True) as r:
