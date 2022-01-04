@@ -26,5 +26,5 @@ def send_mail(CONFIG):
     message.attach(part2)
     with smtplib.SMTP("localhost") as server:
         server.sendmail(
-            sender_email, receiver_email, message.as_string()
+            CONFIG.SENDER, CONFIG.RECEIVER, message.as_string()
         )
