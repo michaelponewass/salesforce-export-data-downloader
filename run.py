@@ -24,7 +24,11 @@ RESULT = Result(RESP.text)
 LINK = getFileLink(RESULT, CONFIG)
 print('Init download...')
 print('Please wait...')
-FILE = downloadFile(LINK, RESULT, CONFIG)
+links = LINK.split()
+fileList=''
+for link in links:  
+    fileList+= downloadFile(link, RESULT, CONFIG)
+    fileList+=", "
 print('Download Completed!')
-print('Your file is located: ' + FILE)
+print('Your file is located: ' + fileList)
 send_mail(CONFIG)
